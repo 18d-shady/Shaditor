@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shaditor</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--bootsrap cdn -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="black">
+	<div class="container">
+	<p class="btn btn-default text-light my-3"><a href="/select" class="text-light">Back</a></p>
+	<form action="/editor/s" class="my-3 float-right" method="POST">
+		<button name="savve" type="submit" class="btn btn-default text-light">Save</button>
+	</form>
+	
+		<div id="image" style="width: 40vw; height: 60vh;">
+			<img id="image" class=" NO-CACHE" style="max-width: 40vw; max-height: 60vh;" src="{{ imagen }}">
+		</div>
+
+
+			<div >
+				<ul id="tabs" class="nav nav-tabs nav-justified">
+					<li class="nav-item"><button class="nav-link btn-dark text-light bott" onclick="openPage('crop', this, 'black')">Crop</button></li>
+					<li class="nav-item"><button class="nav-link btn-dark text-light bott" onclick="openPage('effect', this, 'black')">Effect</button></li>
+					<li class="nav-item"><button class="nav-link btn-dark text-light bott" onclick="openPage('filters', this, 'black')">Filters</button></li>
+				</ul>
+			</div>
+
+		
+		
+		<div id="styless">
+
+			<div id="crop" class="disp"  style="background-color: black; margin: auto;">
+				<form action="/editor/c" style="display: inline-block;" method="POST">
+					<button name="cropp" type="submit" class="btn btn-default text-light" disabled>Crop</button>
+				</form>
+
+				<form action="/editor/fv" style="display: inline-block;" method="POST">
+					<button name="flipv" class="btn btn-default text-light" type="submit">Flip Vertical</button>
+				</form>
+
+				<form action="/editor/fh" style="display: inline-block;" method="POST">
+					<button name="fliph" type="submit" class="btn btn-default text-light">Flip Horizontal</button>
+				</form>
+
+				<form action="/editor/r" style="display: inline-block;" method="POST">
+					<button name="rott" type="submit" class="btn btn-default text-light">Rotate</button>
+				</form>
+				
+			</div>
+			
+			<form method="POST" action="/editor">
+
+			<div id="effect" class="disp" style="background-color: black; margin: auto;">
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='b1' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edb1.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Blur 1</p>
+				</div>
+				
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='b2' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edb2.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Blur 2</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='b3' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edb3.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Blur 3</p>
+				</div>
+				
+			</div>
+
+			<div id="filters" class="disp scollmenu" style="background-color: black; margin: auto;">
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c1' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc1.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Merge</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c2' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc2.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Mini</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c3' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc3.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Blur</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c4' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc4.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Contour</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c5' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc5.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Detail</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c6' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc6.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Edge 1</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c7' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc7.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Edge 2</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c8' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc8.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Emboss</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c9' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc9.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Edge 3</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c10' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc10.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Smooth</p>
+				</div>
+
+				<div style="display: inline-block;">
+					<label>
+						<input type='radio' name='choice' id='choice' value='c11' onchange='this.form.submit()'>
+						<img class="imagy NO-CACHE" src="/static/images/edc11.png">
+					</label>
+					<p style="font-size: 10px; margin: auto; margin-top: 0px;">Sharpen</p>
+				</div>
+
+
+				
+			</div>
+
+		</form>
+			
+		</div>
+	
+		
+	
+	</div>
+
+	<script type="text/javascript">
+		function openPage(pageName, elmnt, color) {
+			var i, disp, bott;
+			disp = document.getElementsByClassName("disp");
+			for(i = 0; i < disp.length; i++) {
+				disp[i].style.display = "none";
+			}
+
+			bott = document.getElementsByClassName('bott');
+			for (i = 0; i < bott.length; i++) {
+				bott[i].style.backgroundColor = "";
+			}
+			document.getElementById(pageName).style.display = "block";
+			elmnt.style.backgroundColor = color;
+		}
+
+		document.getElementById("defaultOpen").click();
+	</script>
+
+	<script type="text/javascript">
+		var nods = document.getElementsByClassName('NO-CACHE'):
+		for (var i = 0; i < nods.length; i++){
+			nods[i].attributes['src'].value += "?a=" + Math.random();	
+		}
+	</script>
+
+	<style type="text/css">
+		#index{
+			background-color: #C63179;
+			color: white;
+		}
+
+		#ver_ali {
+			margin-top: 30vh;
+			font-size: 60px;
+		}
+
+
+		#makes {
+			font-size: 30px;
+		}
+
+		#grey {
+			color: #BBB9B9;
+		}
+
+		.black {
+			background-color: black;
+			color: white;
+		}
+
+		#image{
+			background-color: black;
+			display: block;
+			margin: auto;
+		}
+
+		.imagy{
+			max-width: 12vw;
+			max-height: 13vh;
+
+		}
+
+		#tabs {
+			width: 30vw;
+			margin: auto;
+		}
+
+		#styless{
+			width: 80vw;
+			height: 15vh;
+			background-color: black;
+			margin: auto;
+		}
+
+		a: active {
+			background-color: #636363;
+		}
+
+		.disp {
+			height: 15vh;
+			display: none;
+
+		}
+
+		[type=radio] {
+			position: absolute;
+			opacity: 0;
+			width: 0;
+			height: 0;
+
+		}
+
+		[type=radio] + img{
+			cursor: pointer;
+		}
+
+		[type=radio]:checked + img {
+			outline: 2px solid #f00;
+		}
+	</style>
+</body>
+</html>

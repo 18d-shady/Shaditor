@@ -1,0 +1,46 @@
+#index{
+	background-color: #C63179;
+	color: white;
+}
+
+#ver_ali {
+	margin-top: 30vh;
+	font-size: 60px;
+}
+
+
+#makes {
+	font-size: 30px;
+}
+
+#grey {
+	color: #BBB9B9;
+}
+
+.black {
+	background-color: black;
+	color: white;
+}
+
+#image{
+	width: 40vw;
+	height: 65vh;
+	background-color: #c4c4c4;
+	margin: auto;
+}
+
+#tabs {
+	width: 30vw;
+	margin: auto;
+}
+
+#styless{
+	width: 80vw;
+	height: 15vh;
+	background-color: #c4c4c4;
+	margin: auto;
+}
+
+a: active {
+	background-color: #636363;
+}
